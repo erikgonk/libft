@@ -6,7 +6,7 @@
 /*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:05:38 by erigonza          #+#    #+#             */
-/*   Updated: 2024/01/20 14:52:55 by erigonza         ###   ########.fr       */
+/*   Updated: 2024/04/14 15:03:16 by erigonza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,12 @@ static int	count_words(const char *str, char c)
 	return (i);
 }
 
-static char	**malloc_error(char **split, int j)
+static char	**free_willy(char **split, int j)
 {
 	while (j >= 0)
 		free(split[j--]);
 	free(split);
-	return (NULL);
-}
-
-static char	**make_split(char **split, int j)
-{
-	split[j] = NULL;
-	return (split);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
@@ -67,13 +61,13 @@ char	**ft_split(char const *s, char c)
 		if (s[i] != c && (s[i + 1] == '\0' || s[i + 1] == c))
 		{
 			split[j++] = ft_substr(s, start, i - start + 1);
-			if (split[j - 1] == NULL)
-				return (malloc_error(split, j - 2));
+			if (split[j - 1] == 0)
+				return (free_willy(split, j - 2));
 		}
 		i++;
 	}
-	split[j] = NULL;
-	return (make_split(split, j));
+	split[j] = 0;
+	return (split);
 }
 /*
 #include <stdio.h>
@@ -84,9 +78,9 @@ int main(void)
 //	int		j = 0;
 
 	char	**a;
-	a = ft_split("hello!", ' ');
-	while (a[i])
-		printf("%s\n", a[i++]);
+	a = ft_split("Hola   \nBuenas", '\n');
+	 while (a[i])
+	 	printf("%s", a[i++]);
 	i = 0;
 	while (a[i])
 		free(a[i++]);

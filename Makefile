@@ -6,7 +6,7 @@
 #    By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/12 11:21:29 by erigonza          #+#    #+#              #
-#    Updated: 2024/01/24 13:41:49 by erigonza         ###   ########.fr        #
+#    Updated: 2024/04/15 13:56:11 by erigonza         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ SRCS = ft_atoi.c ft_itoa.c ft_putchar.c ft_putstr.c ft_putnbr.c ft_putchar_fd.c\
 	   ft_bzero.c ft_memcmp.c ft_memmove.c ft_memchr.c ft_memcpy.c ft_calloc.c\
 	   ft_strlen.c ft_strdup.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_strrchr.c\
 	   ft_strnstr.c ft_strncmp.c ft_substr.c ft_strjoin.c ft_strtrim.c ft_split.c\
-	   ft_strmapi.c ft_striteri.c
+	   ft_strmapi.c ft_striteri.c\
+	   ft_printf.c ft_putchar_error.c\
+		 get_next_line.c get_next_line_utils.c
 SRCS_BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c\
 			 ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 OBJS = $(SRCS:%.c=%.o)
@@ -35,24 +37,23 @@ CFLAGS = -Wall -Wextra -Werror -MMD -g
 
 #------------------------------------EXECUTE-----------------------------------#
 
+.SILENT:
+
 %.o: %.c Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
-	echo "$@ \tcompiled!"
 
 all: $(NAME)
 
 $(NAME): $(OBJS) 
 	ar rcs $(NAME) $(OBJS)
-	echo "Library $(NAME) compiled!"
 
 bonus: $(OBJS) $(OBJS_BONUS) 
 	ar rcs $(NAME) $(OBJS_BONUS) $(OBJS)
-	echo "BONUS $(NAME) compiled!"
 
 #-------------------------------------CLEAN------------------------------------#
 
 clean:
-	$(RM) $(NAME) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
+	$(RM) $(OBJS) $(DEPS) $(OBJS_BONUS) $(DEPS_BONUS)
 
 fclean: clean
 	$(RM) $(NAME)
