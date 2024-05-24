@@ -10,18 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: erigonza <erigonza@student.42barcel>       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 13:10:08 by erigonza          #+#    #+#             */
-/*   Updated: 2024/05/24 18:46:03 by erigonza         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "./inc/libft.h"
 
 static void	putstr(int fd, char *str, int *len)
@@ -147,10 +135,4 @@ int	ft_fd_printf(int fd, const char *str, ...)
 	}
 	va_end(args);
 	return (count);
-}
-
-int main(void)
-{
-	ft_fd_printf(1, "hola%s%s\n", "hola");
-  return 0;
 }
