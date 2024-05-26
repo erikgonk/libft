@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/libft.h"
+#include "../inc/libft.h"
 
 static char	*next_line(char *buffer, int i, int s_tmp)
 {

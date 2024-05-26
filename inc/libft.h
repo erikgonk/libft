@@ -26,6 +26,15 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+typedef struct s_libft
+{
+	char			*c;
+	int				len;
+	int				fd;
+	int				error;
+	int				i;
+}	t_libft;
+
 // write
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
@@ -84,7 +93,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 //
 //
 // printf
-int		ft_fd_printf(int fd, const char *str, ...);
+int		fd_printf(int fd, const char *str, ...);
 //
 int		ft_putchar_error(int fd, char c);
 //
